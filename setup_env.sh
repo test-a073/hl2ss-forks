@@ -15,8 +15,7 @@ conda activate $ENV_NAME
 
 # Install required packages
 echo "Installing required packages..."
-conda install -c conda-forge numpy opencv -y
-pip install av pynput open3d pyaudio
+conda install -c conda-forge numpy opencv av pynput open3d pyaudio -y
 
 # Print success message
 echo "Environment setup is complete."
