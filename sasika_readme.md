@@ -1,7 +1,7 @@
 run the following commands
 
 ```
-pip install av pynput open3d pyaudio
+chmod +x setup_env.sh
 ./setup_hl2ss_env.sh
 conda activate hl2ss_env
 ```
