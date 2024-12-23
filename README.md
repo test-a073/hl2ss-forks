@@ -5,7 +5,7 @@ HoloLens 2 server software and Python client library for streaming sensor data v
 **Supported interfaces**
 
 - Research Mode Visible Light Cameras (640x480 @ 30 FPS, Grayscale, H264 or HEVC encoded)
-  - Left Front
+  - Leftp Front
   - Left Left
   - Right Front
   - Right Right
