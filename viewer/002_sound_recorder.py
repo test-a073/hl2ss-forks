@@ -42,7 +42,7 @@ logging.info(f"Output folder '{output_folder}' is ready for storing audio files.
 def on_press(key):
     global enable, is_recording, combined_audio
 
-    if key == keyboard.Key.esc:
+    if key.char == "e":
         enable = False  # Stop the script
         logging.info("Esc key pressed. Stopping the script.")
         return False    # Exit listener

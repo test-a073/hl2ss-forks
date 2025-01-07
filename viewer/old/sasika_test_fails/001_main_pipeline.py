@@ -1,3 +1,7 @@
+# CONFIGURATION 
+transcription_file_path = "sasika_stream/transcription.txt"
+audio_recording_file_path = "sasika_stream/recording_2025-01-07_11-17-52.wav"
+
 #------------------------------------------------------------------------------ 
 # 1. GET THE AUDIO DATA FROM THE HOLOLENS MICROPHONE
 #------------------------------------------------------------------------------ 
@@ -12,6 +16,9 @@ import os
 from datetime import datetime
 import config
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+
 # Settings --------------------------------------------------------------------
 
 # HoloLens address
@@ -22,10 +29,6 @@ profile = hl2ss.AudioProfile.RAW
 
 #------------------------------------------------------------------------------ 
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
-
-# Enable script and recording
 enable = True
 is_recording = False
 combined_audio = AudioSegment.empty()
@@ -33,13 +36,10 @@ output_folder = "sasika_stream"
 
 # Ensure the output folder exists
 os.makedirs(output_folder, exist_ok=True)
+logging.info(f"Output folder '{output_folder}' is ready for storing audio files.")
 
 def on_press(key):
     global enable, is_recording, combined_audio
-
-    if key == keyboard.Key.esc:
-        enable = False  # Stop the script
-        return False    # Exit listener
 
     try:
         if key.char == 'w':  # Start recording
@@ -59,23 +59,22 @@ def on_press(key):
                 combined_audio.export(filepath, format="wav")
                 logging.info(f"Audio saved as {filepath}")
                 is_recording = False
+                enable = False
+                return False  # Stop the listener after saving the audio
 
     except AttributeError:
         pass
 
-    return enable
+    return True  # Continue listening
 
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
+logging.info("Keyboard listener started. Press 'W' to start recording, 'Q' to stop recording, 'Esc' to quit.")
 
-# Connect to HoloLens
-logging.info(f"Connecting to HoloLens at IP: {host}")
 client = hl2ss_lnm.rx_microphone(host, hl2ss.StreamPort.MICROPHONE, profile=profile)
 client.open()
 logging.info(f"Connected to HoloLens at {host}.")
 
-# Recording loop
-logging.info('Press W to start recording, Q to stop recording, and Esc to quit.')
 while enable: 
     data = client.get_next_packet()
     audio = hl2ss_utilities.microphone_planar_to_packed(data.payload) if (profile != hl2ss.AudioProfile.RAW) else data.payload
@@ -89,11 +88,12 @@ while enable:
                                          sample_width=2)
         combined_audio += segment
 
-# Close the client connection
+logging.info("Audio capture completed.")
 client.close()
+logging.info("HoloLens microphone client closed.")
+listener.join()
+logging.info("Keyboard listener stopped.")
 
-# Stop the listener after recording is stopped
-listener.stop()
 
 #------------------------------------------------------------------------------ 
 # 2. CONVERT THE AUDIO FILE TO TEXT PROMPT
@@ -105,7 +105,7 @@ import time
 start_time = time.time()
 
 # Get the audio file
-audio_file_path = "sasika_stream/recording_2025-01-07_10-04-37.wav"  # Example file, change as needed
+audio_file_path = filepath
 logging.info(f"Attempting to transcribe the audio file: {audio_file_path}")
 
 # Create a recognizer instance
@@ -140,7 +140,7 @@ if text_prompt:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Write to file if we have text to write
-    with open("transcription.txt", "a") as f:
+    with open(transcription_file_path, "a") as f:
         f.write(f"\n[{timestamp}] {text_prompt}")
         logging.info("Text prompt appended to transcription.txt")
 else:
