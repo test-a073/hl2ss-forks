@@ -1,3 +1,10 @@
+### 002_main_pipeline.py
+
+# This script implements a HoloLens-based audio recording system 
+# that captures audio data, saves recordings, transcribes them 
+# using Google Speech Recognition, and appends the transcription 
+# to a file. 
+
 import logging
 import os
 from datetime import datetime
@@ -172,6 +179,7 @@ class HoloLensAudioRecorder:
             text = self.transcribe_audio(self.current_audio_file)
             if text:
                 self.append_transcription(text)
+                return text
 
 if __name__ == "__main__":
     # Configure logging
@@ -192,6 +200,14 @@ if __name__ == "__main__":
             output_folder="sasika_stream",
             transcription_file="sasika_stream/transcription.txt"
         )
-        recorder.run()
+        transcribed_text = recorder.run()
+
+        queries = {
+            "text": transcribed_text,
+            "image" : None
+        }
+
+        print(queries)
+
     except Exception as e:
         logging.error(f"Fatal error: {e}")
