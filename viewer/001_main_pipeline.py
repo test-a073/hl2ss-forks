@@ -1,12 +1,7 @@
-# 1. GET THE AUDIO DATA FROM THE HOLOLENS MICROPHONE 
-#------------------------------------------------------------------------------
-# This script captures microphone audio from the HoloLens.
-# Press 'W' to start recording and 'Q' to stop recording and save the audio to the "sasika_stream" folder.
-# The saved file will be named in the format recording_<date_time>.wav.
-# Audio stream configuration is fixed to 2 channels, 48000 Hz.
-# Press 'Esc' to stop the script entirely.
-#------------------------------------------------------------------------------
-
+#------------------------------------------------------------------------------ 
+# 1. GET THE AUDIO DATA FROM THE HOLOLENS MICROPHONE
+#------------------------------------------------------------------------------ 
+import logging
 from pynput import keyboard
 from pydub import AudioSegment
 import io
@@ -27,6 +22,10 @@ profile = hl2ss.AudioProfile.RAW
 
 #------------------------------------------------------------------------------ 
 
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
+
+# Enable script and recording
 enable = True
 is_recording = False
 combined_audio = AudioSegment.empty()
@@ -44,7 +43,7 @@ def on_press(key):
 
     try:
         if key.char == 'w':  # Start recording
-            print("Recording started...")
+            logging.info("Recording started...")
             is_recording = True
             combined_audio = AudioSegment.empty()
         
@@ -56,9 +55,9 @@ def on_press(key):
                 filepath = os.path.join(output_folder, filename)
                 
                 # Save the audio file
-                print(f"Recording stopped. Saving audio to {filepath}...")
+                logging.info(f"Recording stopped. Saving audio to {filepath}...")
                 combined_audio.export(filepath, format="wav")
-                print(f"Audio saved as {filepath}")
+                logging.info(f"Audio saved as {filepath}")
                 is_recording = False
 
     except AttributeError:
@@ -69,10 +68,14 @@ def on_press(key):
 listener = keyboard.Listener(on_press=on_press)
 listener.start()
 
+# Connect to HoloLens
+logging.info(f"Connecting to HoloLens at IP: {host}")
 client = hl2ss_lnm.rx_microphone(host, hl2ss.StreamPort.MICROPHONE, profile=profile)
 client.open()
+logging.info(f"Connected to HoloLens at {host}.")
 
-print('Press W to start recording, Q to stop recording, and Esc to quit.')
+# Recording loop
+logging.info('Press W to start recording, Q to stop recording, and Esc to quit.')
 while enable: 
     data = client.get_next_packet()
     audio = hl2ss_utilities.microphone_planar_to_packed(data.payload) if (profile != hl2ss.AudioProfile.RAW) else data.payload
@@ -86,14 +89,15 @@ while enable:
                                          sample_width=2)
         combined_audio += segment
 
+# Close the client connection
 client.close()
-listener.join()
 
-#------------------------------------------------------------------------------
+# Stop the listener after recording is stopped
+listener.stop()
+
+#------------------------------------------------------------------------------ 
 # 2. CONVERT THE AUDIO FILE TO TEXT PROMPT
-#------------------------------------------------------------------------------
-# IMPORT LIBRARIES
-from pydub import AudioSegment
+#------------------------------------------------------------------------------ 
 import speech_recognition as sr
 import time
 
@@ -101,7 +105,8 @@ import time
 start_time = time.time()
 
 # Get the audio file
-audio_file_path = "sasika_stream/recording_2025-01-07_10-04-37.wav"
+audio_file_path = "sasika_stream/recording_2025-01-07_10-04-37.wav"  # Example file, change as needed
+logging.info(f"Attempting to transcribe the audio file: {audio_file_path}")
 
 # Create a recognizer instance
 r = sr.Recognizer()
@@ -114,31 +119,29 @@ with sr.AudioFile(audio_file_path) as source:
     # Recognize the audio data
     try:
         text_prompt = r.recognize_google(audio_data)  # Changed variable name to text_prompt
+        logging.info(f"Transcription successful: {text_prompt}")
     except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
+        logging.error("Google Speech Recognition could not understand audio")
         text_prompt = ""  # Added to handle the error case
     except sr.RequestError as e:
-        print(f"Could not request results from Google Speech Recognition service; {e}")
+        logging.error(f"Could not request results from Google Speech Recognition service; {e}")
         text_prompt = ""  # Added to handle the error case
 
 end_time = time.time()
 
-# Print the time taken in 3 decimal places
-print(f"Time taken: {end_time - start_time:.3f} seconds\n")
+# Log the time taken for recognition
+logging.info(f"Time taken for transcription: {end_time - start_time:.3f} seconds")
 
-# Print the recognized text
-print(f"Recognized Text: {text_prompt}")
-
-#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------ 
 # 3. DISPLAY THE TEXT PROMPT AND APPEND IT TO A TEXT FILE IN A NEW LINE
-#------------------------------------------------------------------------------
-# Get current timestamp for the log
-timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-# Only write to file if we have text to write
+#------------------------------------------------------------------------------ 
 if text_prompt:
+    # Get current timestamp for the log
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Write to file if we have text to write
     with open("transcription.txt", "a") as f:
         f.write(f"\n[{timestamp}] {text_prompt}")
-        print(f"Text prompt appended to transcription.txt")
+        logging.info("Text prompt appended to transcription.txt")
 else:
-    print("No text to append due to recognition error")
+    logging.info("No text to append due to recognition error")
