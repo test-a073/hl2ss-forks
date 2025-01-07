@@ -57,7 +57,7 @@ if __name__ == '__main__':
         print(f'Started {port}')        
         
     # Create Display Map ------------------------------------------------------
-    def display_pv(port, payload):
+    def display_pv(port, payload, show_image_frames = False):
         if (payload.image is not None and payload.image.size > 0):
             # Save the frame as sample.jpg every 'save_interval' seconds
             timestamp = time.time()
@@ -68,7 +68,9 @@ if __name__ == '__main__':
                 cv2.imwrite(os.path.join("sasika_stream", "sample.jpg"), payload.image)
                 display_pv.last_saved_time = timestamp
 
-            cv2.imshow(hl2ss.get_port_name(port), payload.image)
+            if show_image_frames:
+                cv2.imshow(hl2ss.get_port_name(port), payload.image)
+            
 
     def display_null(port, payload):
         pass

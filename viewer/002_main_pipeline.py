@@ -202,10 +202,24 @@ if __name__ == "__main__":
         )
         transcribed_text = recorder.run()
 
+        import json
+
+        # Define the dictionary
         queries = {
-            "text": transcribed_text,
-            "image" : None
+            "text": transcribed_text,  # Replace with the actual transcribed text
+            "image": "sasika_stream/sample.jpg"
         }
+
+        # Specify the output file path
+        output_file = "sasika_stream/queries.json"
+
+        try:
+            # Write the dictionary to the JSON file
+            with open(output_file, "w") as json_file:
+                json.dump(queries, json_file, indent=4)  # Use indent for readability
+            print(f"Data successfully written to {output_file}")
+        except IOError as e:
+            print(f"Error writing to file: {e}")
 
         print(queries)
 

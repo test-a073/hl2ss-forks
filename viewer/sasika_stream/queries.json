@@ -1,7 +1,4 @@
-[
-  {
-    "image_path": "sasika_stream\\frame_2025-01-07_14-24-35.jpg",
-    "transcription": "what can you see what can you see",
-    "timestamp": "2025-01-07 14:24:48"
-  }
-]
+{
+    "text": "hello what can you see",
+    "image": "sasika_stream/sample.jpg"
+}
