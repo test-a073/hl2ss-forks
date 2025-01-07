@@ -276,9 +276,10 @@ def _save_calibration_pv(calibration, path):
     calibration.tangential_distortion.tofile(os.path.join(path, 'tangential_distortion.bin'))
     calibration.projection           .tofile(os.path.join(path, 'projection.bin'))
     calibration.intrinsics           .tofile(os.path.join(path, 'intrinsics.bin'))
-    calibration.extrinsics           .tofile(os.path.join(path, 'extrinsics.bin'))
-    calibration.intrinsics_mf        .tofile(os.path.join(path, 'intrinsics_mf.bin'))
-    calibration.extrinsics_mf        .tofile(os.path.join(path, 'extriniscs_mf.bin'))
+
+
+def _save_extrinsics_pv(extrinsics, path):
+    extrinsics                       .tofile(os.path.join(path, 'extrinsics.bin'))
 
 
 def _load_calibration_rm_vlc(path):
@@ -330,11 +331,14 @@ def _load_calibration_pv(path):
     tangential_distortion = np.fromfile(os.path.join(path, 'tangential_distortion.bin'), dtype=np.float32)
     projection            = np.fromfile(os.path.join(path, 'projection.bin'),            dtype=np.float32).reshape((4, 4))
     intrinsics            = np.fromfile(os.path.join(path, 'intrinsics.bin'),            dtype=np.float32).reshape((4, 4))
-    extrinsics            = np.fromfile(os.path.join(path, 'extrinsics.bin'),            dtype=np.float32).reshape((4, 4))
-    intrinsics_mf         = np.fromfile(os.path.join(path, 'intrinsics_mf.bin'),         dtype=np.float32)
-    extrinsics_mf         = np.fromfile(os.path.join(path, 'extrinsics_mf.bin'),         dtype=np.float32)
 
-    return hl2ss._Mode2_PV(focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics, extrinsics, intrinsics_mf, extrinsics_mf)
+    return hl2ss._Mode2_PV(focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics)
+
+
+def _load_extrinsics_pv(path):
+    extrinsics            = np.fromfile(os.path.join(path, 'extrinsics.bin'),            dtype=np.float32).reshape((4, 4))
+
+    return extrinsics
 
 
 #------------------------------------------------------------------------------
@@ -406,6 +410,12 @@ def _load_calibration_rm(port, path):
 # Calibration Manager
 #------------------------------------------------------------------------------
 
+class _Mode2_PV(hl2ss._Mode2_PV):
+    def __init__(self, mode2, extrinsics):
+        super().__init__(mode2.focal_length, mode2.principal_point, mode2.radial_distortion, mode2.tangential_distortion, mode2.projection, mode2.intrinsics)
+        self.extrinsics = extrinsics
+
+
 def _check_calibration_directory(path):
     if (not os.path.isdir(path)):
         raise IOError('Calibration path ' + path + ' does not exist')
@@ -434,11 +444,12 @@ def get_calibration_rm(host, port, path):
     return calibration
 
 
-def get_calibration_pv(host, port, path, focus, width, height, framerate):
+def get_calibration_pv(host, port, path, focus, width, height, framerate, load_extrinsics):
     _check_calibration_directory(path)
 
     root = _calibration_subdirectory(port, path)
     base = _calibration_subdirectory_pv(focus, width, height, root)
+    extrinsics = _load_extrinsics_pv(root) if (load_extrinsics) else None
 
     try:
         calibration = _load_calibration_pv(base)
@@ -447,7 +458,16 @@ def get_calibration_pv(host, port, path, focus, width, height, framerate):
         os.makedirs(base, exist_ok=True)
         _save_calibration_pv(calibration, base)
         
-    return calibration
+    return _Mode2_PV(calibration, extrinsics)
+
+
+def save_extrinsics_pv(port, extrinsics, path):
+    _check_calibration_directory(path)
+
+    base = _calibration_subdirectory(port, path)
+    os.makedirs(base, exist_ok=True)
+
+    return _save_extrinsics_pv(extrinsics, base)
 
 
 #------------------------------------------------------------------------------

@@ -1,5 +1,4 @@
 
-import struct
 import hl2ss
 
 
@@ -12,12 +11,12 @@ def get_video_codec_default_factor(profile):
     return 1/75 if (name == 'h264') else 1/150 if (name == 'hevc') else 1.0
 
 
-def get_video_codec_default_gop_size(framerate, divisor, profile):
-    return max([1, framerate if (profile != hl2ss.VideoProfile.RAW) else 1])
+def get_video_codec_default_gop_size(framerate, divisor):
+    return max([1, framerate])
 
 
 def get_video_codec_bitrate(width, height, framerate, divisor, factor):
-    return int(width*height*framerate*12*factor)
+    return int(width*height*(framerate/divisor)*12*factor)
 
 
 def get_video_codec_default_bitrate(width, height, framerate, divisor, profile):
@@ -26,7 +25,7 @@ def get_video_codec_default_bitrate(width, height, framerate, divisor, profile):
 
 def get_video_codec_default_options(width, height, framerate, divisor, profile):
     options = dict()
-    options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize] = get_video_codec_default_gop_size(framerate, divisor, profile)
+    options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize] = get_video_codec_default_gop_size(framerate, divisor) if (profile != hl2ss.VideoProfile.RAW) else 1
     return options
 
 
@@ -67,16 +66,14 @@ def get_sync_period(rx):
         return 1
     if (rx.port == hl2ss.StreamPort.EXTENDED_AUDIO):
         return 1
-    if (rx.port == hl2ss.StreamPort.EXTENDED_VIDEO):
-        return rx.options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize]
 
 
 #------------------------------------------------------------------------------
 # Control
 #------------------------------------------------------------------------------
 
-def start_subsystem_pv(host, port, enable_mrc=False, hologram_composition=True, recording_indicator=False, video_stabilization=False, blank_protected=False, show_mesh=False, shared=False, global_opacity=0.9, output_width=0.0, output_height=0.0, video_stabilization_length=0, hologram_perspective=hl2ss.HologramPerspective.PV):
-    hl2ss.start_subsystem_pv(host, port, enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, shared, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective)
+def start_subsystem_pv(host, port, enable_mrc=False, hologram_composition=True, recording_indicator=False, video_stabilization=False, blank_protected=False, show_mesh=False, global_opacity=0.9, output_width=0.0, output_height=0.0, video_stabilization_length=0, hologram_perspective=hl2ss.HologramPerspective.PV):
+    hl2ss.start_subsystem_pv(host, port, enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective)
 
 
 def stop_subsystem_pv(host, port):
@@ -93,22 +90,16 @@ def rx_rm_vlc(host, port, chunk=hl2ss.ChunkSize.RM_VLC, mode=hl2ss.StreamMode.MO
 
     if (options is None):
         options = get_video_codec_default_options(hl2ss.Parameters_RM_VLC.WIDTH, hl2ss.Parameters_RM_VLC.HEIGHT, hl2ss.Parameters_RM_VLC.FPS, divisor, profile)
-        options[hl2ss.H26xEncoderProperty.HL2SSAPI_VLCHostTicksOffsetExposure] = struct.unpack('<Q', struct.pack('<d', 0.0))[0]
-        options[hl2ss.H26xEncoderProperty.HL2SSAPI_VLCHostTicksOffsetConstant] = struct.unpack('<Q', struct.pack('<q', -125000))[0]
-    else:
-        options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize] = options.get(hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize, get_video_codec_default_gop_size(hl2ss.Parameters_RM_VLC.FPS, divisor, profile))
     
     return hl2ss.rx_decoded_rm_vlc(host, port, chunk, mode, divisor, profile, level, bitrate, options) if (decoded) else hl2ss.rx_rm_vlc(host, port, chunk, mode, divisor, profile, level, bitrate, options)
 
 
 def rx_rm_depth_ahat(host, port, chunk=hl2ss.ChunkSize.RM_DEPTH_AHAT, mode=hl2ss.StreamMode.MODE_1, divisor=1, profile_z=hl2ss.DepthProfile.SAME, profile_ab=hl2ss.VideoProfile.H265_MAIN, level=hl2ss.H26xLevel.DEFAULT, bitrate=None, options=None, decoded=True):
     if (bitrate is None):
-        bitrate = get_video_codec_default_bitrate(hl2ss.Parameters_RM_DEPTH_AHAT.WIDTH, hl2ss.Parameters_RM_DEPTH_AHAT.HEIGHT, hl2ss.Parameters_RM_DEPTH_AHAT.FPS, divisor, profile_ab) * (16 if (profile_z == hl2ss.DepthProfile.SAME) else 1)
+        bitrate = get_video_codec_default_bitrate(hl2ss.Parameters_RM_DEPTH_AHAT.WIDTH, hl2ss.Parameters_RM_DEPTH_AHAT.HEIGHT, hl2ss.Parameters_RM_DEPTH_AHAT.FPS, divisor, profile_ab) * (4 if ((profile_z == hl2ss.DepthProfile.SAME) and (profile_ab != hl2ss.VideoProfile.RAW)) else 1)
 
     if (options is None):
-        options = get_video_codec_default_options(hl2ss.Parameters_RM_DEPTH_AHAT.WIDTH, hl2ss.Parameters_RM_DEPTH_AHAT.HEIGHT, hl2ss.Parameters_RM_DEPTH_AHAT.FPS, divisor, profile_ab)
-    else:
-        options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize] = options.get(hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize, get_video_codec_default_gop_size(hl2ss.Parameters_RM_DEPTH_AHAT.FPS, divisor, profile_ab))
+        options = get_video_codec_default_options(hl2ss.Parameters_RM_VLC.WIDTH, hl2ss.Parameters_RM_VLC.HEIGHT, hl2ss.Parameters_RM_VLC.FPS, divisor, profile_ab)
     
     return hl2ss.rx_decoded_rm_depth_ahat(host, port, chunk, mode, divisor, profile_z, profile_ab, level, bitrate, options) if (decoded) else hl2ss.rx_rm_depth_ahat(host, port, chunk, mode, divisor, profile_z, profile_ab, level, bitrate, options)
 
@@ -127,8 +118,6 @@ def rx_pv(host, port, chunk=hl2ss.ChunkSize.PERSONAL_VIDEO, mode=hl2ss.StreamMod
 
     if (options is None):
         options = get_video_codec_default_options(width, height, framerate, divisor, profile)
-    else:
-        options[hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize] = options.get(hl2ss.H26xEncoderProperty.CODECAPI_AVEncMPVGOPSize, get_video_codec_default_gop_size(framerate, divisor, profile))
     
     return hl2ss.rx_decoded_pv(host, port, chunk, mode, width, height, framerate, divisor, profile, level, bitrate, options, decoded_format) if (decoded_format) else hl2ss.rx_pv(host, port, chunk, mode, width, height, framerate, divisor, profile, level, bitrate, options)
 
@@ -173,14 +162,6 @@ def download_calibration_pv(host, port, width, height, framerate):
     return hl2ss.download_calibration_pv(host, port, width, height, framerate)
 
 
-def download_devicelist_extended_audio(host, port):
-    return hl2ss.download_devicelist_extended_audio(host, port)
-
-
-def download_devicelist_extended_video(host, port):
-    return hl2ss.download_devicelist_extended_video(host, port)
-
-
 #------------------------------------------------------------------------------
 # IPC
 #------------------------------------------------------------------------------
@@ -203,8 +184,4 @@ def ipc_vi(host, port):
 
 def ipc_umq(host, port):
     return hl2ss.ipc_umq(host, port)
-
-
-def ipc_gmq(host, port):
-    return hl2ss.ipc_gmq(host, port)
 

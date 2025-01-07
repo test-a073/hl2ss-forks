@@ -22,7 +22,6 @@ class StreamPort:
     SPATIAL_INPUT        = 3812
     EXTENDED_EYE_TRACKER = 3817
     EXTENDED_AUDIO       = 3818
-    EXTENDED_VIDEO       = 3819
 
 
 # IPC TCP Ports
@@ -32,7 +31,6 @@ class IPCPort:
     SCENE_UNDERSTANDING  = 3814
     VOICE_INPUT          = 3815
     UNITY_MESSAGE_QUEUE  = 3816
-    GUEST_MESSAGE_QUEUE  = 3820
 
 
 # Default Chunk Sizes
@@ -174,7 +172,6 @@ class MixerMode:
     MICROPHONE = 0
     SYSTEM     = 1
     BOTH       = 2
-    QUERY      = 0x80000000
 
 
 # RM VLC Parameters
@@ -224,13 +221,6 @@ class Parameters_RM_IMU_MAGNETOMETER:
 
 # Microphone Parameters
 class Parameters_MICROPHONE:
-    ARRAY_CHANNELS     = 5
-    ARRAY_TOP_LEFT     = 0
-    ARRAY_TOP_CENTER   = 1
-    ARRAY_TOP_RIGHT    = 2
-    ARRAY_BOTTOM_LEFT  = 3
-    ARRAY_BOTTOM_RIGHT = 4
-
     SAMPLE_RATE    = 48000
     CHANNELS       = 2
     PERIOD         = 1 / SAMPLE_RATE
@@ -427,8 +417,6 @@ class H26xEncoderProperty:
     CODECAPI_AVLowLatencyMode = 16
     CODECAPI_AVEncVideoMaxQP = 17
     CODECAPI_VideoEncoderDisplayContentType = 18
-    HL2SSAPI_VLCHostTicksOffsetConstant = 0xFFFFFFFFFFFFFFFE
-    HL2SSAPI_VLCHostTicksOffsetExposure = 0xFFFFFFFFFFFFFFFF
 
 
 def _create_configuration_for_mode(mode):
@@ -467,8 +455,8 @@ def _create_configuration_for_h26x_encoding(options):
     return bytes(configuration)
 
 
-def _create_configuration_for_mrc_video(enable, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, shared, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective):
-    return struct.pack('<BBBBBBBfffII', 1 if (enable) else 0, 1 if (hologram_composition) else 0, 1 if (recording_indicator) else 0, 1 if (video_stabilization) else 0, 1 if (blank_protected) else 0, 1 if (show_mesh) else 0, 1 if (shared) else 0, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective)
+def _create_configuration_for_mrc_video(enable, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective):
+    return struct.pack('<BBBBBBfffII', 1 if (enable) else 0, 1 if (hologram_composition) else 0, 1 if (recording_indicator) else 0, 1 if (video_stabilization) else 0, 1 if (blank_protected) else 0, 1 if (show_mesh) else 0, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective)
 
 
 def _create_configuration_for_mrc_audio(mixer_mode, loopback_gain, microphone_gain):
@@ -540,11 +528,6 @@ def _create_configuration_for_pv_mode2(mode, width, height, framerate):
     configuration.extend(_create_configuration_for_mode(mode))
     configuration.extend(_create_configuration_for_video_format(width, height, framerate))
     return bytes(configuration)
-
-
-def extended_audio_device_mixer_mode(mixer_mode, device):
-    DEVICE_BASE = 0x00000004
-    return mixer_mode | (DEVICE_BASE * (device + 1))
 
 
 #------------------------------------------------------------------------------
@@ -619,11 +602,11 @@ class _PVCNT:
     MODE_3 = 0x03
 
 
-def start_subsystem_pv(host, port, enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, shared, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective):
+def start_subsystem_pv(host, port, enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective):
     c = _client()
     c.open(host, port)
     c.sendall(_create_configuration_for_pv_mode2(_PVCNT.START | _PVCNT.MODE_3, 1920, 1080, 30))
-    c.sendall(_create_configuration_for_mrc_video(enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, shared, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective))
+    c.sendall(_create_configuration_for_mrc_video(enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective))
     c.close()
 
 
@@ -876,25 +859,6 @@ def get_audio_codec_bitrate(profile):
 # RM VLC Decoder
 #------------------------------------------------------------------------------
 
-class _RM_VLC_Frame:
-    def __init__(self, image, sensor_ticks, exposure, gain):
-        self.image        = image
-        self.sensor_ticks = sensor_ticks
-        self.exposure     = exposure
-        self.gain         = gain
-
-
-def unpack_rm_vlc(payload):
-    image    = payload[:-24]
-    metadata = payload[-24:]
-
-    sensor_ticks = np.frombuffer(metadata, dtype=np.uint64, offset=0,  count=1)
-    exposure     = np.frombuffer(metadata, dtype=np.uint64, offset=8,  count=1)
-    gain         = np.frombuffer(metadata, dtype=np.uint32, offset=16, count=1)
-
-    return _RM_VLC_Frame(image, sensor_ticks, exposure, gain)
-
-
 class _decode_rm_vlc:
     def __init__(self, profile):
         self.profile = profile
@@ -926,14 +890,9 @@ def decode_rm_vlc(profile):
 #------------------------------------------------------------------------------
 
 class _RM_Depth_Frame:
-    def __init__(self, depth, ab, sensor_ticks):
-        self.depth        = depth
-        self.ab           = ab
-        self.sensor_ticks = sensor_ticks
-
-
-class _Mode0Layout_RM_DEPTH_AHAT_STRUCT:
-    BASE = 8
+    def __init__(self, depth, ab):
+        self.depth = depth
+        self.ab    = ab
 
 
 class _Mode0Layout_RM_DEPTH_AHAT:
@@ -945,7 +904,7 @@ class _Mode0Layout_RM_DEPTH_AHAT:
     END_AB_V_Y    = BEGIN_AB_V_Y + (Parameters_RM_DEPTH_AHAT.WIDTH // 4)
 
 
-def _unpack_rm_depth_ahat_nv12_as_yuv420p(yuv, sensor_ticks):
+def _unpack_rm_depth_ahat_nv12_as_yuv420p(yuv):
     y = yuv[_Mode0Layout_RM_DEPTH_AHAT.BEGIN_DEPTH_Y : _Mode0Layout_RM_DEPTH_AHAT.END_DEPTH_Y, :]
     u = yuv[_Mode0Layout_RM_DEPTH_AHAT.BEGIN_AB_U_Y  : _Mode0Layout_RM_DEPTH_AHAT.END_AB_U_Y,  :].reshape((Parameters_RM_DEPTH_AHAT.HEIGHT, Parameters_RM_DEPTH_AHAT.WIDTH // 4))
     v = yuv[_Mode0Layout_RM_DEPTH_AHAT.BEGIN_AB_V_Y  : _Mode0Layout_RM_DEPTH_AHAT.END_AB_V_Y,  :].reshape((Parameters_RM_DEPTH_AHAT.HEIGHT, Parameters_RM_DEPTH_AHAT.WIDTH // 4))
@@ -961,7 +920,7 @@ def _unpack_rm_depth_ahat_nv12_as_yuv420p(yuv, sensor_ticks):
     ab[:, 2::4] = v
     ab[:, 3::4] = v
 
-    return _RM_Depth_Frame(depth, ab, sensor_ticks)
+    return _RM_Depth_Frame(depth, ab)
 
 
 class _decode_rm_depth_ahat:
@@ -972,9 +931,9 @@ class _decode_rm_depth_ahat:
         self._codec = av.CodecContext.create(get_video_codec_name(self.profile), 'r')
 
     def decode(self, payload):
-        for packet in self._codec.parse(payload[_Mode0Layout_RM_DEPTH_AHAT_STRUCT.BASE:-8]):
+        for packet in self._codec.parse(payload):
             for frame in self._codec.decode(packet):
-                return _unpack_rm_depth_ahat_nv12_as_yuv420p(frame.to_ndarray(), np.frombuffer(payload[-8:], dtype=np.uint64, offset=0, count=1))
+                return _unpack_rm_depth_ahat_nv12_as_yuv420p(frame.to_ndarray())
         return None
 
 
@@ -983,10 +942,10 @@ class _unpack_rm_depth_ahat:
         pass
 
     def decode(self, payload):
-        depth        = np.frombuffer(payload,      dtype=np.uint16, offset=_Mode0Layout_RM_DEPTH_AHAT_STRUCT.BASE,                                                  count=Parameters_RM_DEPTH_AHAT.PIXELS).reshape(Parameters_RM_DEPTH_AHAT.SHAPE)
-        ab           = np.frombuffer(payload,      dtype=np.uint16, offset=_Mode0Layout_RM_DEPTH_AHAT_STRUCT.BASE + Parameters_RM_DEPTH_AHAT.PIXELS * _SIZEOF.WORD, count=Parameters_RM_DEPTH_AHAT.PIXELS).reshape(Parameters_RM_DEPTH_AHAT.SHAPE)
-        sensor_ticks = np.frombuffer(payload[-8:], dtype=np.uint64, offset=0,                                                                                       count=1)
-        return _RM_Depth_Frame(depth, ab, sensor_ticks)
+        depth = np.frombuffer(payload, dtype=np.uint16, offset=0,                                            count=Parameters_RM_DEPTH_AHAT.PIXELS).reshape(Parameters_RM_DEPTH_AHAT.SHAPE)
+        ab    = np.frombuffer(payload, dtype=np.uint16, offset=Parameters_RM_DEPTH_AHAT.PIXELS*_SIZEOF.WORD, count=Parameters_RM_DEPTH_AHAT.PIXELS).reshape(Parameters_RM_DEPTH_AHAT.SHAPE)
+        depth[depth >= 4090] = 0
+        return _RM_Depth_Frame(depth, ab)
 
 
 class _decompress_zdepth:
@@ -995,9 +954,7 @@ class _decompress_zdepth:
         self._codec = pyzdepth.DepthCompressor()
 
     def decode(self, payload):
-        if (len(payload) <= 0):
-            return None
-        result, width, height, decompressed = self._codec.Decompress(bytes(payload))
+        result, width, height, decompressed = self._codec.Decompress(payload)
         return np.frombuffer(decompressed, dtype=np.uint16).reshape((height, width))
 
 
@@ -1035,16 +992,15 @@ class _decode_rm_depth_ahat_zdepth:
     def decode(self, payload):
         size_z, size_ab = struct.unpack_from('<II', payload, 0)
 
-        start_z  = _Mode0Layout_RM_DEPTH_AHAT_STRUCT.BASE
+        start_z  = 8
         end_z    = start_z + size_z
         start_ab = end_z
         end_ab   = start_ab + size_ab
 
-        depth        = self._codec_z.decode(payload[start_z:end_z])
-        ab           = self._codec_ab.decode(payload[start_ab:end_ab])
-        sensor_ticks = np.frombuffer(payload[-8:], dtype=np.uint64, offset=0, count=1)
+        depth = self._codec_z.decode(bytes(payload[start_z:end_z]))
+        ab    = self._codec_ab.decode(payload[start_ab:end_ab])
 
-        return _RM_Depth_Frame(depth, ab, sensor_ticks)
+        return _RM_Depth_Frame(depth, ab)
 
 
 def decode_rm_depth_ahat(profile_z, profile_ab):
@@ -1052,11 +1008,10 @@ def decode_rm_depth_ahat(profile_z, profile_ab):
 
 
 def decode_rm_depth_longthrow(payload):
-    composite    = cv2.imdecode(np.frombuffer(payload[:-8], dtype=np.uint8), cv2.IMREAD_UNCHANGED)
-    h, w, _      = composite.shape
-    image        = composite.view(np.uint16).reshape((2*h, w))
-    sensor_ticks = np.frombuffer(payload[-8:], dtype=np.uint64, offset=0, count=1)
-    return _RM_Depth_Frame(image[:h, :], image[h:, :], sensor_ticks)
+    composite = cv2.imdecode(np.frombuffer(payload, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
+    h, w, _ = composite.shape
+    image = composite.view(np.uint16).reshape((2*h, w))
+    return _RM_Depth_Frame(image[:h, :], image[h:, :])
 
 
 #------------------------------------------------------------------------------
@@ -1090,27 +1045,11 @@ class unpack_rm_imu:
 # PV Decoder
 #------------------------------------------------------------------------------
 
-class PV_FocusState:
-    UNINITIALIZED = 0
-    LOST          = 1
-    SEARCHING     = 2
-    FOCUSED       = 3
-    FAILED        = 4
-
-
 class _PV_Frame:
-    def __init__(self, image, focal_length, principal_point, exposure_time, exposure_compensation, lens_position, focus_state, iso_speed, white_balance, iso_gains, white_balance_gains):
-        self.image                 = image
-        self.focal_length          = focal_length
-        self.principal_point       = principal_point
-        self.exposure_time         = exposure_time
-        self.exposure_compensation = exposure_compensation
-        self.lens_position         = lens_position
-        self.focus_state           = focus_state
-        self.iso_speed             = iso_speed
-        self.white_balance         = white_balance
-        self.iso_gains             = iso_gains
-        self.white_balance_gains   = white_balance_gains
+    def __init__(self, image, focal_length, principal_point):
+        self.image           = image
+        self.focal_length    = focal_length
+        self.principal_point = principal_point
 
 
 def create_pv_intrinsics(focal_length, principal_point):
@@ -1130,25 +1069,11 @@ def update_pv_intrinsics(intrinsics, focal_length, principal_point):
 
 
 def unpack_pv(payload):
-    image    = payload[0:-80]
-    metadata = payload[-80:]
-
-    focal_length          = np.frombuffer(metadata, dtype=np.float32, offset=0,  count=2)
-    principal_point       = np.frombuffer(metadata, dtype=np.float32, offset=8,  count=2)
-    exposure_time         = np.frombuffer(metadata, dtype=np.uint64,  offset=16, count=1)
-    exposure_compensation = np.frombuffer(metadata, dtype=np.uint64,  offset=24, count=2)
-    lens_position         = np.frombuffer(metadata, dtype=np.uint32,  offset=40, count=1)
-    focus_state           = np.frombuffer(metadata, dtype=np.uint32,  offset=44, count=1)
-    iso_speed             = np.frombuffer(metadata, dtype=np.uint32,  offset=48, count=1)
-    white_balance         = np.frombuffer(metadata, dtype=np.uint32,  offset=52, count=1)
-    iso_gains             = np.frombuffer(metadata, dtype=np.float32, offset=56, count=2)
-    white_balance_gains   = np.frombuffer(metadata, dtype=np.float32, offset=64, count=3)
-
-    return _PV_Frame(image, focal_length, principal_point, exposure_time, exposure_compensation, lens_position, focus_state, iso_speed, white_balance, iso_gains, white_balance_gains)
+    return _PV_Frame(payload[:-16], np.frombuffer(payload[-16:-8], dtype=np.float32), np.frombuffer(payload[-8:], dtype=np.float32))
 
 
 def get_video_stride(width):
-    return (width + 63) & ~63
+    return width + ((64 - (width & 63)) & 63)
 
 
 class _decode_pv:
@@ -1175,27 +1100,13 @@ class _unpack_pv:
         'nv12'  : None
     }
 
-    _resolution = {
-        get_video_stride(1952)*1100 : (1952, 1100, get_video_stride(1952)),
-        get_video_stride(1504)*846  : (1504,  846, get_video_stride(1504)),
-        get_video_stride(1920)*1080 : (1920, 1080, get_video_stride(1920)),
-        get_video_stride(1280)*720  : (1280,  720, get_video_stride(1280)),
-        get_video_stride(640)*360   : ( 640,  360, get_video_stride( 640)),
-        get_video_stride(760)*428   : ( 760,  428, get_video_stride( 760)),
-        get_video_stride(960)*540   : ( 960,  540, get_video_stride( 960)),
-        get_video_stride(1128)*636  : (1128,  636, get_video_stride(1128)),
-        get_video_stride(424)*240   : ( 424,  240, get_video_stride( 424)),
-        get_video_stride(500)*282   : ( 500,  282, get_video_stride( 500))
-    }
-
     def create(self, width, height):
         self.width = width
         self.height = height
         self.stride = get_video_stride(width)
 
     def decode(self, payload, format):
-        width, height, stride = _unpack_pv._resolution[(len(payload) * 2) // 3]
-        image = np.frombuffer(payload, dtype=np.uint8).reshape(((height*3) //2, stride))[:, :width]
+        image = np.frombuffer(payload, dtype=np.uint8).reshape((int(self.height*3/2), self.stride))[:, :self.width]
         sf = _unpack_pv._cv2_nv12_format[format]
         return image if (sf is None) else cv2.cvtColor(image, sf)
 
@@ -1223,18 +1134,15 @@ class _decode_microphone:
 
 
 class _unpack_microphone:
-    def __init__(self, level):
-        self.level = level
-
     def create(self):
-        self.dtype = np.float32 if (self.level == AACLevel.L5) else np.int16
+        pass
 
     def decode(self, payload):
-        return np.frombuffer(payload, dtype=self.dtype).reshape((1, -1))
+        return np.frombuffer(payload, dtype=np.int16).reshape((1, -1))
 
 
-def decode_microphone(profile, level):
-    return _unpack_microphone(level) if (profile == AudioProfile.RAW) else _decode_microphone(profile)
+def decode_microphone(profile):
+    return _unpack_microphone() if (profile == AudioProfile.RAW) else _decode_microphone(profile)
 
 
 #------------------------------------------------------------------------------
@@ -1426,8 +1334,7 @@ class rx_decoded_rm_vlc(rx_rm_vlc):
 
     def get_next_packet(self):
         data = super().get_next_packet()
-        data.payload = unpack_rm_vlc(data.payload)
-        data.payload.image = self._codec.decode(data.payload.image)
+        data.payload = self._codec.decode(data.payload)
         return data
 
     def close(self):
@@ -1493,7 +1400,7 @@ class rx_decoded_pv(rx_pv):
 class rx_decoded_microphone(rx_microphone):
     def __init__(self, host, port, chunk, profile, level):
         super().__init__(host, port, chunk, profile, level)
-        self._codec = decode_microphone(profile, level)
+        self._codec = decode_microphone(profile)
         
     def open(self):
         self._codec.create()
@@ -1511,7 +1418,7 @@ class rx_decoded_microphone(rx_microphone):
 class rx_decoded_extended_audio(rx_extended_audio):
     def __init__(self, host, port, chunk, mixer_mode, loopback_gain, microphone_gain, profile, level):
         super().__init__(host, port, chunk, mixer_mode, loopback_gain, microphone_gain, profile, level)
-        self._codec = decode_microphone(profile, None)
+        self._codec = decode_microphone(profile)
         
     def open(self):
         self._codec.create()
@@ -1601,13 +1508,7 @@ class _Mode2Layout_PV:
     END_TANGENTIALDISTORTION   = BEGIN_TANGENTIALDISTORTION + 2
     BEGIN_PROJECTION           = END_TANGENTIALDISTORTION
     END_PROJECTION             = BEGIN_PROJECTION + 16
-    BEGIN_EXTRINSICS           = END_PROJECTION
-    END_EXTRINSICS             = BEGIN_EXTRINSICS + 16
-    BEGIN_INTRINSICS_MF        = END_EXTRINSICS
-    END_INTRINSICS_MF          = BEGIN_INTRINSICS_MF + 4
-    BEGIN_EXTRINSICS_MF        = END_INTRINSICS_MF
-    END_EXTRINSICS_MF          = BEGIN_EXTRINSICS_MF + 7
-    FLOAT_COUNT                = 2 + 2 + 3 + 2 + 16 + 16 + 4 + 7
+    FLOAT_COUNT                = 2 + 2 + 3 + 2 + 16
 
 
 class _Mode2_RM_VLC:
@@ -1643,16 +1544,13 @@ class _Mode2_RM_IMU:
 
 
 class _Mode2_PV:
-    def __init__(self, focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics, extrinsics, intriniscs_mf, extrinsics_mf):
+    def __init__(self, focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics):
         self.focal_length          = focal_length
         self.principal_point       = principal_point
         self.radial_distortion     = radial_distortion
         self.tangential_distortion = tangential_distortion
         self.projection            = projection
         self.intrinsics            = intrinsics
-        self.extrinsics            = extrinsics
-        self.intrinsics_mf         = intriniscs_mf
-        self.extrinsics_mf         = extrinsics_mf
 
 
 def _download_mode2_data(host, port, configuration, bytes):
@@ -1735,33 +1633,10 @@ def download_calibration_pv(host, port, width, height, framerate):
     radial_distortion     = floats[_Mode2Layout_PV.BEGIN_RADIALDISTORTION     : _Mode2Layout_PV.END_RADIALDISTORTION    ]
     tangential_distortion = floats[_Mode2Layout_PV.BEGIN_TANGENTIALDISTORTION : _Mode2Layout_PV.END_TANGENTIALDISTORTION]
     projection            = floats[_Mode2Layout_PV.BEGIN_PROJECTION           : _Mode2Layout_PV.END_PROJECTION          ].reshape((4, 4))
-    extrinsics            = floats[_Mode2Layout_PV.BEGIN_EXTRINSICS           : _Mode2Layout_PV.END_EXTRINSICS          ].reshape((4, 4))
-    intrinsics_mf         = floats[_Mode2Layout_PV.BEGIN_INTRINSICS_MF        : _Mode2Layout_PV.END_INTRINSICS_MF       ]
-    extrinsics_mf         = floats[_Mode2Layout_PV.BEGIN_EXTRINSICS_MF        : _Mode2Layout_PV.END_EXTRINSICS_MF       ]
 
     intrinsics = np.array([[-focal_length[0], 0, 0, 0], [0, focal_length[1], 0, 0], [principal_point[0], principal_point[1], 1, 0], [0, 0, 0, 1]], dtype=np.float32)
 
-    return _Mode2_PV(focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics, extrinsics, intrinsics_mf, extrinsics_mf)
-
-
-def download_devicelist_extended_audio(host, port):
-    c = _client()
-    c.open(host, port)
-    c.sendall(_create_configuration_for_extended_audio(MixerMode.QUERY, 1.0, 1.0, AudioProfile.AAC_24000, AACLevel.L2))
-    size = struct.unpack('<I', c.download(_SIZEOF.DWORD, ChunkSize.SINGLE_TRANSFER))[0]
-    query = c.download(size, ChunkSize.SINGLE_TRANSFER).decode('utf-16')
-    c.close()
-    return query
-
-
-def download_devicelist_extended_video(host, port):
-    c = _client()
-    c.open(host, port)
-    c.sendall(_create_configuration_for_pv_mode2(StreamMode.MODE_2, 1920, 1080, 30))
-    size = struct.unpack('<I', c.download(_SIZEOF.DWORD, ChunkSize.SINGLE_TRANSFER))[0]
-    query = c.download(size, ChunkSize.SINGLE_TRANSFER).decode('utf-16')
-    c.close()
-    return query
+    return _Mode2_PV(focal_length, principal_point, radial_distortion, tangential_distortion, projection, intrinsics)
 
 
 #------------------------------------------------------------------------------
@@ -1789,8 +1664,6 @@ class _PortName:
         'unity_message_queue',
         'extended_eye_tracker',
         'extended_audio',
-        'extended_video',
-        'guest_message_queue',
     ]
 
 
@@ -1881,11 +1754,6 @@ class PV_IsoSpeedValue:
     Max = 3200
 
 
-class PV_BacklightCompensationState:
-    Disable = 0
-    Enable = 1
-
-
 class PV_CaptureSceneMode:
     Auto = 0
     Macro = 2
@@ -1901,43 +1769,10 @@ class PV_CaptureSceneMode:
     Backlit = 12
 
 
-class PV_MediaCaptureOptimization:
-    Default = 0
-    Quality = 1
-    Latency = 2
-    Power = 3
-    LatencyThenQuality = 4
-    LatencyThenPower = 5
-    PowerAndQuality = 6
+class PV_BacklightCompensationState:
+    Disable = 0
+    Enable = 1
 
-
-class PV_CaptureUse:
-    NotSet = 0
-    Photo = 1
-    Video = 2
-
-
-class PV_OpticalImageStabilizationMode:
-    Off = 0
-    On = 1
-
-
-class PV_HdrVideoMode:
-    Off = 0
-    On = 1
-    Auto = 2
-
-
-class PV_RegionOfInterestType:
-    Unknown = 0
-    Face = 1
-
-class InterfacePriority:
-    LOWEST = -2
-    BELOW_NORMAL = -1
-    NORMAL = 0
-    ABOVE_NORMAL = 1
-    HIGHEST = 2
 
 class ipc_rc(_context_manager):
     _CMD_GET_APPLICATION_VERSION = 0x00
@@ -1953,14 +1788,6 @@ class ipc_rc(_context_manager):
     _CMD_SET_PV_ISO_SPEED = 0x0A
     _CMD_SET_PV_BACKLIGHT_COMPENSATION = 0x0B
     _CMD_SET_PV_SCENE_MODE = 0x0C
-    _CMD_SET_FLAT_MODE = 0x0D
-    _CMD_SET_RM_EYE_SELECTION = 0x0E
-    _CMD_SET_PV_DESIRED_OPTIMIZATION = 0x0F
-    _CMD_SET_PV_PRIMARY_USE = 0x10
-    _CMD_SET_PV_OPTICAL_IMAGE_STABILIZATION = 0x11
-    _CMD_SET_PV_HDR_VIDEO = 0x12
-    _CMD_SET_PV_REGIONS_OF_INTEREST = 0x13
-    _CMD_SET_INTERFACE_PRIORITY = 0x14
 
     def __init__(self, host, port):
         self.host = host
@@ -2036,39 +1863,6 @@ class ipc_rc(_context_manager):
         command = struct.pack('<BI', ipc_rc._CMD_SET_PV_SCENE_MODE, mode)
         self._client.sendall(command)
 
-    def set_flat_mode(self, mode):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_FLAT_MODE, mode)
-        self._client.sendall(command)
-
-    def set_rm_eye_selection(self, enable):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_RM_EYE_SELECTION, 1 if (enable) else 0)
-        self._client.sendall(command)
-
-    def set_pv_desired_optimization(self, mode):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_PV_DESIRED_OPTIMIZATION, mode)
-        self._client.sendall(command)
-
-    def set_pv_primary_use(self, mode):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_PV_PRIMARY_USE, mode)
-        self._client.sendall(command)
-
-    def set_pv_optical_image_stabilization(self, mode):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_PV_OPTICAL_IMAGE_STABILIZATION, mode)
-        self._client.sendall(command)
-
-    def set_pv_hdr_video(self, mode):
-        command = struct.pack('<BI', ipc_rc._CMD_SET_PV_HDR_VIDEO, mode)
-        self._client.sendall(command)
-
-    def set_pv_regions_of_interest(self, clear, set, auto_exposure, auto_focus, bounds_normalized, type, weight, x, y, w, h):
-        mode = (0x1000 if (clear) else 0) | (0x0800 if (set) else 0) | (0x0400 if (auto_exposure) else 0) | (0x0200 if (auto_focus) else 0) | (0x0100 if (bounds_normalized) else 0) | ((type & 1) << 7) | (weight & 0x007F)
-        command = struct.pack('<BIffff', ipc_rc._CMD_SET_PV_REGIONS_OF_INTEREST, mode, x, y, w, h)
-        self._client.sendall(command)
-
-    def set_interface_priority(self, port, priority):
-        command = struct.pack('<BIi', ipc_rc._CMD_SET_INTERFACE_PRIORITY, port, priority)
-        self._client.sendall(command)
-    
 
 #------------------------------------------------------------------------------
 # Spatial Mapping
@@ -2513,34 +2307,6 @@ class ipc_umq(_context_manager):
     def pull_n(self, count):
         return np.frombuffer(self._client.download(_SIZEOF.DWORD * count, ChunkSize.SINGLE_TRANSFER), dtype=np.uint32)
 
-    def close(self):
-        self._client.close()
-
-
-#------------------------------------------------------------------------------
-# Guest Message Queue
-#------------------------------------------------------------------------------
-
-class ipc_gmq(_context_manager):
-    _CMD_NONE = _RANGEOF.U32_MAX
-
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
-
-    def open(self):
-        self._client = _client()
-        self._client.open(self.host, self.port)
-
-    def pull(self):
-        self._client.sendall(struct.pack('<I', ipc_gmq._CMD_NONE))
-        header = struct.unpack('<II', self._client.download(_SIZEOF.DWORD * 2, ChunkSize.SINGLE_TRANSFER))
-        data = self._client.download(header[1], ChunkSize.SINGLE_TRANSFER) if (header[1] > 0) else b''
-        return (header[0], data) if (header[0] != ipc_gmq._CMD_NONE) else None
-    
-    def push(self, response):
-        self._client.sendall(struct.pack('<I', response))
-    
     def close(self):
         self._client.close()
 
