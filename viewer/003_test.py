@@ -63,6 +63,7 @@ if __name__ == '__main__':
             
             if data is not None and data.payload.image is not None and data.payload.image.size > 0:
                 filename = f"frame_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
+                filename = "sample.jpg"
                 filepath = os.path.join(output_folder, filename)
                 cv2.imwrite(filepath, data.payload.image)
                 logging.info(f"Frame saved: {filepath}")

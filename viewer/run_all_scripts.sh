@@ -2,7 +2,7 @@
 
 # Run the first Python script
 echo "Running 001_sasika_image_saver.py..."
-python3 001_sasika_image_saver.py
+python3 003_test.py
 
 echo "----------------------------------"
 

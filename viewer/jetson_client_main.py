@@ -29,7 +29,7 @@ query_text = queries["text"]
 
 # Determine the inference device
 inference_device = policy_function()
-
+inference_device = 1
 if inference_device == 0:
     import requests
 
@@ -73,8 +73,8 @@ elif inference_device == 1:
             model="moondream",
             messages=[{
                 "role": "user",
-                "content": "What can you observe in this image?",
-                "images": ["new.jpg"]
+                "content": query_text,
+                "images": [image_path]
             }]
         )
 
