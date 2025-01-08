@@ -1,1 +1,8 @@
 HOLOLENS_IP = "192.168.106.91"
+
+# Personal Video Stream settings
+PV_WIDTH = 760
+PV_HEIGHT = 428
+PV_FRAMERATE = 30
+IMAGE_BUFFER_ELEMENTS = 30
+OUTPUT_FOLDER = "sasika_stream"
