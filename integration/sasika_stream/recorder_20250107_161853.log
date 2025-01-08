@@ -1,0 +1,36 @@
+2025-01-07 16:18:53,270 - INFO - setup_logging - Logging initialized. Log file: sasika_stream\recorder_20250107_161853.log
+2025-01-07 16:18:53,286 - INFO - validate_directories - Directories validated. Output folder: sasika_stream
+2025-01-07 16:18:53,286 - DEBUG - validate_directories - Transcription file location: sasika_stream\transcription.txt
+2025-01-07 16:18:53,286 - INFO - run_recorder - Starting recorder. Host: 192.168.106.91
+2025-01-07 16:18:53,286 - INFO - initialize_streams - Initializing streams
+2025-01-07 16:18:53,286 - DEBUG - initialize_streams - Starting PV subsystem
+2025-01-07 16:19:14,326 - ERROR - <module> - Application error: local variable 'producer' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 252, in initialize_streams
+    hl2ss_lnm.start_subsystem_pv(host, hl2ss.StreamPort.PERSONAL_VIDEO)
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\hl2ss_lnm.py", line 76, in start_subsystem_pv
+    hl2ss.start_subsystem_pv(host, port, enable_mrc, hologram_composition, recording_indicator, video_stabilization, blank_protected, show_mesh, global_opacity, output_width, output_height, video_stabilization_length, hologram_perspective)
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\hl2ss.py", line 607, in start_subsystem_pv
+    c.open(host, port)
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\hl2ss.py", line 270, in open
+    self._socket.connect((host, port))
+TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 388, in run_recorder
+    producer, consumer, sinks = initialize_streams(host)
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 252, in initialize_streams
+    hl2ss_lnm.start_subsystem_pv(host, hl2ss.StreamPort.PERSONAL_VIDEO)
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 454, in <module>
+    queries_data = run_recorder(
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 430, in run_recorder
+    cleanup(host, producer, sinks)
+UnboundLocalError: local variable 'producer' referenced before assignment
+2025-01-07 16:19:14,326 - INFO - <module> - Application shutdown complete

@@ -29,7 +29,7 @@ query_text = queries["text"]
 
 # Determine the inference device
 inference_device = policy_function()
-inference_device = 1
+
 if inference_device == 0:
     import requests
 

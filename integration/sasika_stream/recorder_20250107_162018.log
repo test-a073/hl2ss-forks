@@ -1,0 +1,35 @@
+2025-01-07 16:20:18,117 - INFO - setup_logging - Logging initialized. Log file: sasika_stream\recorder_20250107_162018.log
+2025-01-07 16:20:18,117 - INFO - validate_directories - Directories validated. Output folder: sasika_stream
+2025-01-07 16:20:18,117 - DEBUG - validate_directories - Transcription file location: sasika_stream\transcription.txt
+2025-01-07 16:20:18,117 - INFO - run_recorder - Starting recorder. Host: 192.168.106.91
+2025-01-07 16:20:18,117 - INFO - initialize_streams - Initializing streams
+2025-01-07 16:20:18,117 - DEBUG - initialize_streams - Starting PV subsystem
+2025-01-07 16:20:18,181 - DEBUG - initialize_streams - Configuring producer
+2025-01-07 16:20:18,182 - DEBUG - initialize_streams - Creating consumer
+2025-01-07 16:20:19,127 - DEBUG - initialize_streams - Initializing port 3810
+2025-01-07 16:21:23,387 - ERROR - <module> - Application error: local variable 'producer' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 388, in run_recorder
+    producer, consumer, sinks = initialize_streams(host)
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 282, in initialize_streams
+    while (sinks[port].get_buffered_frame(0)[0] != 0):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\hl2ss_mp.py", line 309, in get_buffered_frame
+    state = self._sink_din.get()
+  File "<string>", line 2, in get
+  File "C:\Users\sasikayw\.conda\envs\hl2ss_env\lib\multiprocessing\managers.py", line 810, in _callmethod
+    kind, result = conn.recv()
+  File "C:\Users\sasikayw\.conda\envs\hl2ss_env\lib\multiprocessing\connection.py", line 250, in recv
+    buf = self._recv_bytes()
+  File "C:\Users\sasikayw\.conda\envs\hl2ss_env\lib\multiprocessing\connection.py", line 305, in _recv_bytes
+    waitres = _winapi.WaitForMultipleObjects(
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 454, in <module>
+    queries_data = run_recorder(
+  File "C:\Sasika\Hololens\hl2ss-forks\viewer\main_functional_script.py", line 430, in run_recorder
+    cleanup(host, producer, sinks)
+UnboundLocalError: local variable 'producer' referenced before assignment
+2025-01-07 16:21:23,560 - INFO - <module> - Application shutdown complete
