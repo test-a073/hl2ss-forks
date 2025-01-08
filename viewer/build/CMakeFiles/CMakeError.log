@@ -1,0 +1,769 @@
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C'
+    Output line: 'cc1: warning: command line option ‘-Wnon-virtual-dtor’ is valid for C++/ObjC++ but not for C'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type  -Wnon-virtual-dtor'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a08d2/fast && /usr/bin/make -f CMakeFiles/cmTC_a08d2.dir/build.make CMakeFiles/cmTC_a08d2.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a08d2.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type  -Wnon-virtual-dtor -o CMakeFiles/cmTC_a08d2.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command line option ‘-Wnon-virtual-dtor’ is valid for C++/ObjC++ but not for C
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking C executable cmTC_a08d2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a08d2.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_a08d2.dir/src.c.o  -o cmTC_a08d2 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C\+\+'
+    Output line: 'cc1plus: warning: command line option ‘-Wmissing-prototypes’ is valid for C/ObjC but not for C++'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations  -Wmissing-prototypes'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8b7e6/fast && /usr/bin/make -f CMakeFiles/cmTC_8b7e6.dir/build.make CMakeFiles/cmTC_8b7e6.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8b7e6.dir/src.cxx.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations  -Wmissing-prototypes -std=c++11 -o CMakeFiles/cmTC_8b7e6.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+cc1plus: warning: command line option ‘-Wmissing-prototypes’ is valid for C/ObjC but not for C++
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking CXX executable cmTC_8b7e6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8b7e6.dir/link.txt --verbose=1
+/usr/bin/c++    -O3 -DNDEBUG    CMakeFiles/cmTC_8b7e6.dir/src.cxx.o  -o cmTC_8b7e6 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C\+\+'
+    Output line: 'cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations  -Wstrict-prototypes'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6d8ed/fast && /usr/bin/make -f CMakeFiles/cmTC_6d8ed.dir/build.make CMakeFiles/cmTC_6d8ed.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6d8ed.dir/src.cxx.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations  -Wstrict-prototypes -std=c++11 -o CMakeFiles/cmTC_6d8ed.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking CXX executable cmTC_6d8ed
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d8ed.dir/link.txt --verbose=1
+/usr/bin/c++    -O3 -DNDEBUG    CMakeFiles/cmTC_6d8ed.dir/src.cxx.o  -o cmTC_6d8ed 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C'
+    Output line: 'cc1: warning: command line option ‘-Wsign-promo’ is valid for C++/ObjC++ but not for C'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow  -Wsign-promo'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_34337/fast && /usr/bin/make -f CMakeFiles/cmTC_34337.dir/build.make CMakeFiles/cmTC_34337.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_34337.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow  -Wsign-promo -o CMakeFiles/cmTC_34337.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command line option ‘-Wsign-promo’ is valid for C++/ObjC++ but not for C
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking C executable cmTC_34337
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34337.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_34337.dir/src.c.o  -o cmTC_34337 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C'
+    Output line: 'cc1: warning: command line option ‘-Wsuggest-override’ is valid for C++/ObjC++ but not for C'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wsuggest-override'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3bc84/fast && /usr/bin/make -f CMakeFiles/cmTC_3bc84.dir/build.make CMakeFiles/cmTC_3bc84.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3bc84.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wsuggest-override -o CMakeFiles/cmTC_3bc84.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command line option ‘-Wsuggest-override’ is valid for C++/ObjC++ but not for C
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking C executable cmTC_3bc84
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3bc84.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_3bc84.dir/src.c.o  -o cmTC_3bc84 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C'
+    Output line: 'cc1: warning: command line option ‘-Wno-delete-non-virtual-dtor’ is valid for C++/ObjC++ but not for C'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wno-delete-non-virtual-dtor'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d044a/fast && /usr/bin/make -f CMakeFiles/cmTC_d044a.dir/build.make CMakeFiles/cmTC_d044a.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d044a.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wno-delete-non-virtual-dtor -o CMakeFiles/cmTC_d044a.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command line option ‘-Wno-delete-non-virtual-dtor’ is valid for C++/ObjC++ but not for C
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking C executable cmTC_d044a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d044a.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_d044a.dir/src.c.o  -o cmTC_d044a 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-unnamed-type-template-args’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor  -Wno-unnamed-type-template-args'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5de87/fast && /usr/bin/make -f CMakeFiles/cmTC_5de87.dir/build.make CMakeFiles/cmTC_5de87.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_5de87.dir/src.cxx.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor  -Wno-unnamed-type-template-args -std=c++11 -o CMakeFiles/cmTC_5de87.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-unnamed-type-template-args’
+Linking CXX executable cmTC_5de87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5de87.dir/link.txt --verbose=1
+/usr/bin/c++    -O3 -DNDEBUG    CMakeFiles/cmTC_5de87.dir/src.cxx.o  -o cmTC_5de87 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1: warning: unrecognized command line option ‘-Wno-unnamed-type-template-args’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wno-unnamed-type-template-args'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_fe6d1/fast && /usr/bin/make -f CMakeFiles/cmTC_fe6d1.dir/build.make CMakeFiles/cmTC_fe6d1.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe6d1.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized  -Wno-unnamed-type-template-args -o CMakeFiles/cmTC_fe6d1.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1: warning: unrecognized command line option ‘-Wno-unnamed-type-template-args’
+Linking C executable cmTC_fe6d1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe6d1.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_fe6d1.dir/src.c.o  -o cmTC_fe6d1 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_dotprod.cpp'
+    check option: ''
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_15475/fast && /usr/bin/make -f CMakeFiles/cmTC_15475.dir/build.make CMakeFiles/cmTC_15475.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_15475.dir/cpu_neon_dotprod.cpp.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE   -std=c++11 -o CMakeFiles/cmTC_15475.dir/cpu_neon_dotprod.cpp.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_dotprod.cpp
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_dotprod.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h: In function ‘int test()’:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33666:1: error: inlining failed in call to always_inline ‘uint32x4_t vdotq_u32(uint32x4_t, uint8x16_t, uint8x16_t)’: target specific option mismatch
+33666 | vdotq_u32 (uint32x4_t __r, uint8x16_t __a, uint8x16_t __b)
+      | ^~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_dotprod.cpp:12:33: note: called from here
+   12 |     uint32x4_t v_dst = vdotq_u32(v_src, v_m0, v_m1);
+      |                        ~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_15475.dir/build.make:66: CMakeFiles/cmTC_15475.dir/cpu_neon_dotprod.cpp.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_15475/fast] Error 2
+
+
+===== END =====
+
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp'
+    check option: ''
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_53f12/fast && /usr/bin/make -f CMakeFiles/cmTC_53f12.dir/build.make CMakeFiles/cmTC_53f12.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_53f12.dir/cpu_neon_fp16.cpp.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE   -std=c++11 -o CMakeFiles/cmTC_53f12.dir/cpu_neon_fp16.cpp.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h: In function ‘void test()’:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:28:24: note: called from here
+   28 |     d = vfmaq_laneq_f16(d, s1, s2, 0);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33319:1: error: inlining failed in call to always_inline ‘float16x8_t vsubq_f16(float16x8_t, float16x8_t)’: target specific option mismatch
+33319 | vsubq_f16 (float16x8_t __a, float16x8_t __b)
+      | ^~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:27:30: note: called from here
+   27 |     float16x8_t d = vsubq_f16(s1, s1);
+      |                     ~~~~~~~~~^~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:29:24: note: called from here
+   29 |     d = vfmaq_laneq_f16(d, s1, s2, 1);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:30:24: note: called from here
+   30 |     d = vfmaq_laneq_f16(d, s1, s2, 2);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:31:24: note: called from here
+   31 |     d = vfmaq_laneq_f16(d, s1, s2, 3);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:32:24: note: called from here
+   32 |     d = vfmaq_laneq_f16(d, s1, s2, 4);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:33:24: note: called from here
+   33 |     d = vfmaq_laneq_f16(d, s1, s2, 5);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:34:24: note: called from here
+   34 |     d = vfmaq_laneq_f16(d, s1, s2, 6);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:35:24: note: called from here
+   35 |     d = vfmaq_laneq_f16(d, s1, s2, 7);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:28:24: note: called from here
+   28 |     d = vfmaq_laneq_f16(d, s1, s2, 0);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33319:1: error: inlining failed in call to always_inline ‘float16x8_t vsubq_f16(float16x8_t, float16x8_t)’: target specific option mismatch
+33319 | vsubq_f16 (float16x8_t __a, float16x8_t __b)
+      | ^~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:27:30: note: called from here
+   27 |     float16x8_t d = vsubq_f16(s1, s1);
+      |                     ~~~~~~~~~^~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:29:24: note: called from here
+   29 |     d = vfmaq_laneq_f16(d, s1, s2, 1);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:30:24: note: called from here
+   30 |     d = vfmaq_laneq_f16(d, s1, s2, 2);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:31:24: note: called from here
+   31 |     d = vfmaq_laneq_f16(d, s1, s2, 3);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:32:24: note: called from here
+   32 |     d = vfmaq_laneq_f16(d, s1, s2, 4);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:33:24: note: called from here
+   33 |     d = vfmaq_laneq_f16(d, s1, s2, 5);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:34:24: note: called from here
+   34 |     d = vfmaq_laneq_f16(d, s1, s2, 6);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+In file included from /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:4:
+/usr/lib/gcc/aarch64-linux-gnu/9/include/arm_neon.h:33398:1: error: inlining failed in call to always_inline ‘float16x8_t vfmaq_laneq_f16(float16x8_t, float16x8_t, float16x8_t, int)’: target specific option mismatch
+33398 | vfmaq_laneq_f16 (float16x8_t __a, float16x8_t __b,
+      | ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_fp16.cpp:35:24: note: called from here
+   35 |     d = vfmaq_laneq_f16(d, s1, s2, 7);
+      |         ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_53f12.dir/build.make:66: CMakeFiles/cmTC_53f12.dir/cpu_neon_fp16.cpp.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_53f12/fast] Error 2
+
+
+===== END =====
+
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp'
+    check option: ''
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_33396/fast && /usr/bin/make -f CMakeFiles/cmTC_33396.dir/build.make CMakeFiles/cmTC_33396.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_33396.dir/cpu_neon_bf16.cpp.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE   -std=c++11 -o CMakeFiles/cmTC_33396.dir/cpu_neon_bf16.cpp.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp:11:1: error: ‘bfloat16x8_t’ does not name a type; did you mean ‘float16x8_t’?
+   11 | bfloat16x8_t vld1q_as_bf16(const float* src)
+      | ^~~~~~~~~~~~
+      | float16x8_t
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp: In function ‘void test()’:
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp:29:5: error: ‘bfloat16x8_t’ was not declared in this scope; did you mean ‘float16x8_t’?
+   29 |     bfloat16x8_t s1 = vld1q_as_bf16(src1), s2 = vld1q_as_bf16(src2);
+      |     ^~~~~~~~~~~~
+      |     float16x8_t
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp:30:51: error: ‘s1’ was not declared in this scope
+   30 |     float32x4_t d = vbfdotq_f32(vdupq_n_f32(0.f), s1, s2);
+      |                                                   ^~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp:30:55: error: ‘s2’ was not declared in this scope
+   30 |     float32x4_t d = vbfdotq_f32(vdupq_n_f32(0.f), s1, s2);
+      |                                                       ^~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp:30:21: error: ‘vbfdotq_f32’ was not declared in this scope; did you mean ‘vdotq_s32’?
+   30 |     float32x4_t d = vbfdotq_f32(vdupq_n_f32(0.f), s1, s2);
+      |                     ^~~~~~~~~~~
+      |                     vdotq_s32
+make[1]: *** [CMakeFiles/cmTC_33396.dir/build.make:66: CMakeFiles/cmTC_33396.dir/cpu_neon_bf16.cpp.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_33396/fast] Error 2
+
+
+===== END =====
+
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp'
+    check option: ' -march=armv8.2-a+bf16'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b3d6b/fast && /usr/bin/make -f CMakeFiles/cmTC_b3d6b.dir/build.make CMakeFiles/cmTC_b3d6b.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b3d6b.dir/cpu_neon_bf16.cpp.o
+/usr/bin/c++    -O3 -DNDEBUG -fPIE    -march=armv8.2-a+bf16 -std=c++11 -o CMakeFiles/cmTC_b3d6b.dir/cpu_neon_bf16.cpp.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/opencv-4.x/cmake/checks/cpu_neon_bf16.cpp
+cc1plus: error: invalid feature modifier ‘bf16’ in ‘-march=armv8.2-a+bf16’
+cc1plus: note: valid arguments are: fp simd crypto crc lse fp16 rcpc rdma dotprod aes sha2 sha3 sm4 fp16fml sve profile rng memtag sb ssbs predres;
+make[1]: *** [CMakeFiles/cmTC_b3d6b.dir/build.make:66: CMakeFiles/cmTC_b3d6b.dir/cpu_neon_bf16.cpp.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b3d6b/fast] Error 2
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C'
+    Output line: 'cc1: warning: command line option ‘-fvisibility-inlines-hidden’ is valid for C++/ObjC++ but not for C'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden  -fvisibility-inlines-hidden'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d35c2/fast && /usr/bin/make -f CMakeFiles/cmTC_d35c2.dir/build.make CMakeFiles/cmTC_d35c2.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d35c2.dir/src.c.o
+/usr/bin/cc   -O3 -DNDEBUG -fPIE    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden  -fvisibility-inlines-hidden -o CMakeFiles/cmTC_d35c2.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command line option ‘-fvisibility-inlines-hidden’ is valid for C++/ObjC++ but not for C
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking C executable cmTC_d35c2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d35c2.dir/link.txt --verbose=1
+/usr/bin/cc   -O3 -DNDEBUG    CMakeFiles/cmTC_d35c2.dir/src.c.o  -o cmTC_d35c2 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1: warning: unrecognized command line option ‘-Wno-implicit-const-int-float-conversion’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -Wno-implicit-const-int-float-conversion'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b4e5c/fast && /usr/bin/make -f CMakeFiles/cmTC_b4e5c.dir/build.make CMakeFiles/cmTC_b4e5c.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b4e5c.dir/src.c.o
+/usr/bin/cc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-implicit-const-int-float-conversion -o CMakeFiles/cmTC_b4e5c.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1: warning: unrecognized command line option ‘-Wno-implicit-const-int-float-conversion’
+Linking C executable cmTC_b4e5c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4e5c.dir/link.txt --verbose=1
+/usr/bin/cc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_b4e5c.dir/src.c.o  -o cmTC_b4e5c 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1: warning: unrecognized command line option ‘-Wno-documentation’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c'
+    check option: ' -Wno-documentation'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_24d64/fast && /usr/bin/make -f CMakeFiles/cmTC_24d64.dir/build.make CMakeFiles/cmTC_24d64.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_24d64.dir/src.c.o
+/usr/bin/cc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-documentation -o CMakeFiles/cmTC_24d64.dir/src.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.c:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1: warning: unrecognized command line option ‘-Wno-documentation’
+Linking C executable cmTC_24d64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24d64.dir/link.txt --verbose=1
+/usr/bin/cc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_24d64.dir/src.c.o  -o cmTC_24d64 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Determining if the _aligned_malloc exist failed with the following output:
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2c5aa/fast && /usr/bin/make -f CMakeFiles/cmTC_2c5aa.dir/build.make CMakeFiles/cmTC_2c5aa.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2c5aa.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -Wno-unused-but-set-variable -Wno-missing-prototypes -Wno-missing-declarations  -O3 -DNDEBUG  -DNDEBUG -fPIE   -o CMakeFiles/cmTC_2c5aa.dir/CheckSymbolExists.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: error: ‘_aligned_malloc’ undeclared (first use in this function)
+    8 |   return ((int*)(&_aligned_malloc))[argc];
+      |                   ^~~~~~~~~~~~~~~
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:8:19: note: each undeclared identifier is reported only once for each function it appears in
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:4:14: warning: parameter ‘argc’ set but not used [-Wunused-but-set-parameter]
+    4 | int main(int argc, char** argv)
+      |          ~~~~^~~~
+make[1]: *** [CMakeFiles/cmTC_2c5aa.dir/build.make:66: CMakeFiles/cmTC_2c5aa.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_2c5aa/fast] Error 2
+
+
+File /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _aligned_malloc
+  return ((int*)(&_aligned_malloc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function sgemm_ exists failed with the following output:
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7506f/fast && /usr/bin/make -f CMakeFiles/cmTC_7506f.dir/build.make CMakeFiles/cmTC_7506f.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7506f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=sgemm_ -O3 -DNDEBUG  -DNDEBUG -fPIE   -o CMakeFiles/cmTC_7506f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7506f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7506f.dir/link.txt --verbose=1
+/usr/bin/cc    -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -DCHECK_FUNCTION_EXISTS=sgemm_ -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_7506f.dir/CheckFunctionExists.c.o  -o cmTC_7506f 
+/usr/bin/ld: CMakeFiles/cmTC_7506f.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text.startup.main+0x10): undefined reference to `sgemm_'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_7506f.dir/build.make:87: cmTC_7506f] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7506f/fast] Error 2
+
+
+
+Build output check failed:
+    Regex: 'command[- ]line option .* is valid for .* but not for C\+\+'
+    Output line: 'cc1plus: warning: command line option ‘-Wno-missing-prototypes’ is valid for C/ObjC but not for C++'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-missing-prototypes'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8ad53/fast && /usr/bin/make -f CMakeFiles/cmTC_8ad53.dir/build.make CMakeFiles/cmTC_8ad53.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8ad53.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-missing-prototypes -std=c++11 -o CMakeFiles/cmTC_8ad53.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+cc1plus: warning: command line option ‘-Wno-missing-prototypes’ is valid for C/ObjC but not for C++
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+Linking CXX executable cmTC_8ad53
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ad53.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_8ad53.dir/src.cxx.o  -o cmTC_8ad53 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-tautological-undefined-compare’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-tautological-undefined-compare'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c7159/fast && /usr/bin/make -f CMakeFiles/cmTC_c7159.dir/build.make CMakeFiles/cmTC_c7159.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c7159.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-tautological-undefined-compare -std=c++11 -o CMakeFiles/cmTC_c7159.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-tautological-undefined-compare’
+Linking CXX executable cmTC_c7159
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7159.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_c7159.dir/src.cxx.o  -o cmTC_c7159 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-shorten-64-to-32’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-shorten-64-to-32'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bc413/fast && /usr/bin/make -f CMakeFiles/cmTC_bc413.dir/build.make CMakeFiles/cmTC_bc413.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bc413.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-shorten-64-to-32 -std=c++11 -o CMakeFiles/cmTC_bc413.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-shorten-64-to-32’
+Linking CXX executable cmTC_bc413
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc413.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_bc413.dir/src.cxx.o  -o cmTC_bc413 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-enum-compare-switch’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-enum-compare-switch'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a2aa8/fast && /usr/bin/make -f CMakeFiles/cmTC_a2aa8.dir/build.make CMakeFiles/cmTC_a2aa8.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a2aa8.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-enum-compare-switch -std=c++11 -o CMakeFiles/cmTC_a2aa8.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-enum-compare-switch’
+Linking CXX executable cmTC_a2aa8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2aa8.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_a2aa8.dir/src.cxx.o  -o cmTC_a2aa8 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-inconsistent-missing-override’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-inconsistent-missing-override'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3bfa7/fast && /usr/bin/make -f CMakeFiles/cmTC_3bfa7.dir/build.make CMakeFiles/cmTC_3bfa7.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3bfa7.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-inconsistent-missing-override -std=c++11 -o CMakeFiles/cmTC_3bfa7.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-inconsistent-missing-override’
+Linking CXX executable cmTC_3bfa7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3bfa7.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_3bfa7.dir/src.cxx.o  -o cmTC_3bfa7 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-stringop-overread’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-stringop-overread'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_14a16/fast && /usr/bin/make -f CMakeFiles/cmTC_14a16.dir/build.make CMakeFiles/cmTC_14a16.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_14a16.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override -Wno-implicit-fallthrough -Wno-array-bounds -Wno-stringop-overflow  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-stringop-overread -std=c++11 -o CMakeFiles/cmTC_14a16.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-stringop-overread’
+Linking CXX executable cmTC_14a16
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14a16.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override -Wno-implicit-fallthrough -Wno-array-bounds -Wno-stringop-overflow  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_14a16.dir/src.cxx.o  -o cmTC_14a16 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-comma’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-comma'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0782f/fast && /usr/bin/make -f CMakeFiles/cmTC_0782f.dir/build.make CMakeFiles/cmTC_0782f.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0782f.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override -Wno-implicit-fallthrough -Wno-array-bounds -Wno-stringop-overflow -Wno-extra-semi  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-comma -std=c++11 -o CMakeFiles/cmTC_0782f.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-comma’
+Linking CXX executable cmTC_0782f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0782f.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Winit-self -Wpointer-arith -Wuninitialized -Wno-delete-non-virtual-dtor -Wno-comment -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-deprecated -Wno-missing-declarations -Wno-shadow -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-sign-compare -Wno-sign-promo -Wno-undef -Wno-ignored-qualifiers -Wno-extra -Wno-unused-function -Wno-unused-const-variable -Wno-invalid-offsetof -Wno-suggest-override -Wno-implicit-fallthrough -Wno-array-bounds -Wno-stringop-overflow -Wno-extra-semi  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_0782f.dir/src.cxx.o  -o cmTC_0782f 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+
+Determining if the include file sys/videoio.h exists failed with the following output:
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5a5b4/fast && /usr/bin/make -f CMakeFiles/cmTC_5a5b4.dir/build.make CMakeFiles/cmTC_5a5b4.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5a5b4.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fsigned-char -W -Wall -Wreturn-type -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wmissing-prototypes -Wstrict-prototypes -Wundef -Winit-self -Wpointer-arith -Wshadow -Wuninitialized -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden  -O3 -DNDEBUG  -DNDEBUG -fPIE   -o CMakeFiles/cmTC_5a5b4.dir/CheckIncludeFile.c.o   -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: sys/videoio.h: No such file or directory
+    1 | #include <sys/videoio.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_5a5b4.dir/build.make:66: CMakeFiles/cmTC_5a5b4.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_5a5b4/fast] Error 2
+
+
+
+Build output check failed:
+    Regex: 'unrecognized .*option'
+    Output line: 'cc1plus: warning: unrecognized command line option ‘-Wno-unused-private-field’'
+Compilation failed:
+    source file: '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx'
+    check option: ' -Wno-unused-private-field'
+===== BUILD LOG =====
+Change Dir: /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_34575/fast && /usr/bin/make -f CMakeFiles/cmTC_34575.dir/build.make CMakeFiles/cmTC_34575.dir/build
+make[1]: Entering directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_34575.dir/src.cxx.o
+/usr/bin/c++    -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-unused-function -Wno-deprecated-declarations -Wno-overloaded-virtual  -O3 -DNDEBUG  -DNDEBUG -fPIE    -Wno-unused-private-field -std=c++11 -o CMakeFiles/cmTC_34575.dir/src.cxx.o -c /home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx
+/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp/src.cxx:1: warning: ignoring #pragma   [-Wunknown-pragmas]
+    1 | #pragma
+      | 
+cc1plus: warning: unrecognized command line option ‘-Wno-unused-private-field’
+Linking CXX executable cmTC_34575
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34575.dir/link.txt --verbose=1
+/usr/bin/c++     -fsigned-char -W -Wall -Wreturn-type -Wnon-virtual-dtor -Waddress -Wsequence-point -Wformat -Wformat-security -Wmissing-declarations -Wundef -Winit-self -Wpointer-arith -Wshadow -Wsign-promo -Wuninitialized -Wsuggest-override -Wno-delete-non-virtual-dtor -Wno-comment -Wimplicit-fallthrough=3 -Wno-strict-overflow -fdiagnostics-show-option -pthread -fomit-frame-pointer -ffunction-sections -fdata-sections  -fvisibility=hidden -fvisibility-inlines-hidden -Wno-unused-function -Wno-deprecated-declarations -Wno-overloaded-virtual  -O3 -DNDEBUG  -DNDEBUG    -Wl,--gc-sections -Wl,--as-needed -Wl,--no-undefined  CMakeFiles/cmTC_34575.dir/src.cxx.o  -o cmTC_34575 
+make[1]: Leaving directory '/home/smart/Desktop/sasika/hl2ss-forks/viewer/build/CMakeFiles/CMakeTmp'
+
+
+===== END =====
+

@@ -7,7 +7,7 @@ import hl2ss_lnm
 import hl2ss_mp
 
 import config
-
+import sys
 # Settings --------------------------------------------------------------------
 
 # HoloLens address
@@ -67,6 +67,7 @@ if __name__ == '__main__':
             if timestamp - display_pv.last_saved_time >= save_interval:
                 cv2.imwrite(os.path.join("sasika_stream", "sample.jpg"), payload.image)
                 display_pv.last_saved_time = timestamp
+                sys.exit()
 
             if show_image_frames:
                 cv2.imshow(hl2ss.get_port_name(port), payload.image)
@@ -97,3 +98,5 @@ if __name__ == '__main__':
     # Stop PV Subsystem if PV is selected -------------------------------------
     if (hl2ss.StreamPort.PERSONAL_VIDEO in ports):
         hl2ss_lnm.stop_subsystem_pv(host, hl2ss.StreamPort.PERSONAL_VIDEO)
+
+	
