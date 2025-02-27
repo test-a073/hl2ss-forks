@@ -8,7 +8,10 @@ import config
 import logging
 import time
 from datetime import datetime
+<<<<<<< HEAD
 from config import *
+=======
+>>>>>>> 983e1eb52b76ecd01ea2fd888ebb8ad6cd1e2b9b
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +24,7 @@ logging.basicConfig(
 )
 
 # Settings
+<<<<<<< HEAD
 host = HOLOLENS_IP
 pv_width = PV_WIDTH
 pv_height = PV_HEIGHT
@@ -28,6 +32,14 @@ pv_framerate = PV_FRAMERATE
 image_buffer_elements = IMAGE_BUFFER_ELEMENTS 
 output_folder = OUTPUT_FOLDER
 
+=======
+host = config.HOLOLENS_IP
+pv_width = 760
+pv_height = 428
+pv_framerate = 30
+buffer_elements = 30
+output_folder = "sasika_stream"
+>>>>>>> 983e1eb52b76ecd01ea2fd888ebb8ad6cd1e2b9b
 os.makedirs(output_folder, exist_ok=True)
 
 if __name__ == '__main__':
@@ -47,7 +59,11 @@ if __name__ == '__main__':
         manager = mp.Manager()
 
         logging.info("Initializing video stream...")
+<<<<<<< HEAD
         producer.initialize(hl2ss.StreamPort.PERSONAL_VIDEO, image_buffer_elements)
+=======
+        producer.initialize(hl2ss.StreamPort.PERSONAL_VIDEO, buffer_elements)
+>>>>>>> 983e1eb52b76ecd01ea2fd888ebb8ad6cd1e2b9b
         producer.start(hl2ss.StreamPort.PERSONAL_VIDEO)
         sink = consumer.create_sink(producer, hl2ss.StreamPort.PERSONAL_VIDEO, manager, None)
         sink.get_attach_response()
